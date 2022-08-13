@@ -1,3 +1,8 @@
+body{
+    font-style: normal;
+    background: #f2f4f7;
+}
+
 th,td {
     border: black solid 1px; 
     padding: 2px;
@@ -5,6 +10,15 @@ th,td {
 
 table {
     border-collapse:  collapse;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content{
+    padding: 0 5px;
 }
 
 .elm_center{
@@ -15,16 +29,44 @@ table {
     color: #00008b;
 }
 
+.link_text:hover{
+    cursor: pointer;
+}
+
 .text_center{
     text-align: center;
 }
 
-.error_text{
+.text_left{
+    text-align: left;
+}
+
+.error_text,
+.red_text{
     color: red;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.litte_bold_text{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.opacity0{
+	opacity: 0;
 }
 
 .w_50{
     width: 50px;
+}
+
+.w_75{
+    width: 75px;
+}
+
+.w_100{
+    width: 100px;
 }
 
 .w_150{
@@ -33,6 +75,10 @@ table {
 
 .w_200{
     width: 200px;
+}
+
+.w_225{
+    width: 225px;
 }
 
 .w_250{
@@ -51,13 +97,355 @@ table {
     margin-bottom: 10px;
 }
 
+.mb_20{
+    margin-bottom: 20px;
+}
+
+.mb_30{
+    margin-bottom: 30px !important;
+}
+
+.mb_40{
+    margin-bottom: 40px !important;
+}
+
+.mt_20{
+    margin-top: 20px !important;
+}
+
+.mt_30{
+    margin-top: 30px !important;
+}
+
+.line_height_15{
+	line-height: 1.5em;
+}
+
+.font_size_12{
+    font-size: 12px;
+}
+
+.font_size_15{
+    font-size: 15px;
+}
+
+.font_size_20{
+    font-size: 20px;
+}
+
 .active_row_0{
     background-color: gray;
 }
 
+.form_label{
+    float: left;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.float_left{
+    float: left;
+}
+
+.bordr_top{
+	border-top: 1px solid black;
+}
+
+.bordr_bottom{
+	border-bottom: 1px solid black;
+}
+
+.under_line_text{
+    text-decoration:underline;
+    font-weight: lighter;
+    cursor:pointer;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.lighter{
+    font-weight: lighter;
+}
+
+.disp_none{
+    display: none;
+}
+
+.disp_none_imporatant{
+    display: none !important;
+}
+
+.button_yes
+, .button_no{
+    display       : inline-block;
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 15pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    background    : #87cefa;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    width         : 75px;
+    margin        : 0 10px;
+}
+
+/*共通ボタン*/
+.main_button{
+    display       : inline-block;
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 11pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 13px 16px;   /* 余白       */
+    background    : #87cefa;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    width         : 200px;
+    margin: 10px 0;
+}
+
+.main_button_disabled,
+.gray_back{
+    background: #00000070 !important;
+}
+
+/*小さめボタン*/
+.min_button{
+    display       : inline-block;
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 12px;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px 5px;   /* 余白       */
+    background    : #87cefa;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    width         : 200px;
+    margin: 5px 0;
+}
+
+/*画面更新ボタン*/
+.updale_button{
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 12px;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px 5px;   /* 余白       */
+    background    : #87cefa;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*幅広いボタン*/
+.wide_button{
+    display       : inline-block;
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 12px;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px 5px;   /* 余白       */
+    background    : #87cefa;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    width         : 90%;
+    margin: 5px 0;
+}
+
+.current_status{
+    background    : #ffa500 !important; 
+}
+
+.main_button:hover,
+.min_button:hover,
+.button_yes:hover, 
+.button_no:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    opacity       : 1;           /* カーソル時透明度 */
+}
+
+/*ヘッダー*/
+.head{
+    text-align: center;
+    font-size: 17px;
+    padding: 5px 0;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+/*top 専用*/
+.top_button{
+    display       : inline-block;
+    border-radius : 1%;          /* 角丸       */
+    font-size     : 30px;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 13px 5px;   /* 余白       */
+    color         : #000000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    opacity       : 0.9;         /* 透明度     */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
+    width         : 150px;
+    height         : 90px;
+    margin: 0 5px;
+}
+
+.top_button:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    opacity       : 1;           /* カーソル時透明度 */
+}
+
+.top_button_1{
+    background-color: #ffa500;
+}
+
+.top_button_2{
+    background-color: #87cefa
+}
+
+/*会議作成専用*/
+.meeting_create{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.meeting_create input[type="text"],
+.meeting_create input[type="number"]{
+    width: 90%;
+}
+
+/*役割・アクション表示*/
+.main_text_span{
+    opacity: 0;
+}
+
+@keyframes showtext{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.self_answer_row{
+    background: #ffa500;
+}
+
+/*ポップアップ関連*/
+.overlay {
+	display: none;
+	z-index: 9999;
+	background-color: #00000070;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+.window {
+	width: 90vw;
+	max-width: 380px;
+	background-color: #ffffff;
+	border-radius: 6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    text-align: left;
+}
+.window li{
+    margin: 5px 0;
+    text-align: center;
+}
+.close {
+	cursor:pointer;
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	font-size: 20px;
+}
+
+.manual_area{
+    background-color: white;
+    border: solid;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.paticipans_table th{
+    background-color: #87cefa;
+    border-width: 1px 0px;
+    border-top: 2px solid #a9a9a9;
+}
+
+.paticipans_table td{
+    border-width: 1px 0px;
+    border-color: #a9a9a9;
+}
+
+.paticipans_table{
+    background-color: white;
+    font-size: 12px;
+    border: 2px solid #a9a9a9;
+}
+
+textarea{
+	resize: none;
+	width:400px;
+	height:200px;
+}
+
 /*admin 専用*/
+.admin_form_div{
+    width: 350px;
+    margin: 0 auto;
+}
+
+.admin_form_div input[type="text"]{
+    width: 100%;
+}
+
+.admin_form_div input[type="radio"]{
+    float: left;
+}
+
+.admin_form_div select{
+    width: 100%;
+}
+
 .admin_table th{
-    background-color: #ffb6c1;
+    background-color: #87cefa;
+    border-width: 1px 0px;
+    border-top: 2px solid #a9a9a9;
+}
+
+.admin_table td{
+ 	border-width: 1px 0px;
+    border-color: #a9a9a9;
 }
 
 .admin_table_title{
@@ -65,10 +453,11 @@ table {
 }
 
 .admin_table{
-    background-color: #fffafa;
+    background-color: white;
     font-size: 12px;
+    border: 2px solid #a9a9a9;
 }
 
 .admin_form .input_text{
-    border: 2px solid #ddd;
+    border: 2px solid #a9a9a9;
 }

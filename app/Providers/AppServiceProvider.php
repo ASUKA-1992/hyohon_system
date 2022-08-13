@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+    	view()->composer('*', function ($view) 
+	    {
+	        $view->with('login_admin', \Session::get('login_admin') );    
+	    });  
     }
 }

@@ -11,4 +11,25 @@ class TopController extends Controller
     {
         return view('admin/top');
     }
+    
+    public function login(Request $request)
+    {
+    	return view('admin/login');
+    }
+    
+    public function login_store(Request $request)
+    {
+    	if($request->password == config('const.admin_password')){
+    		\Session::put('login_admin', true);
+    		return redirect()->route('top');
+    	}
+    	
+    	return view('admin/login');
+    }
+    
+    public function logout(Request $request)
+    {
+    	$request->session()->forget('login_admin');
+    	return redirect()->route('top');
+    }
 }

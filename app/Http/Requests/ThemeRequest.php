@@ -25,7 +25,7 @@ class ThemeRequest extends FormRequest
     public function rules()
     {
         return [
-            "name"      => ["required","min:1","max:20",Rule::unique('themes')->ignore($this->id)],
+            "name"      => ["required","min:1","max:50",Rule::unique('themes')->ignore($this->id)],
         ];
     }
 

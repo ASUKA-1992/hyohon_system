@@ -10,4 +10,10 @@ class TopController extends Controller
     {
         return view('top');
     }
+
+    public function message($id)
+    {
+        $message = config("const.messages")[$id];
+        return view('message', compact('message'));
+    }
 }

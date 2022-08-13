@@ -16,7 +16,7 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->integer('meeting_id');
-            $table->string('name');
+            $table->string('name')->nullable(true)->default(NULL);
             $table->integer('owner_type')->default(1);
             $table->string('role_name')->nullable(true)->default(NULL);
             $table->string('role_name_sub')->nullable(true)->default(NULL);

@@ -1,4 +1,4 @@
-@extends('layout.admin.common',['title'=>'枠割一覧'])
+@extends('layout.admin.common',['title'=>'テーマ一覧'])
 @section('content')
     <div class="text_center link_text">
         <a href="./theme/create">新規作成</a>

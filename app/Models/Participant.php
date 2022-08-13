@@ -9,7 +9,13 @@ class Participant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['meeting_id', 'name',
+    protected $fillable = ['meeting_id', 'name', 'owner_type', 
         'role_name', 'role_name_sub',
-        'action_name', 'action_name_sub'];
+        'action_name', 'action_name_sub',
+        'role_open', 'action_open'];
+
+    public function meeting()
+    {
+        return $this->belongsTo('App\Models\Meeting');
+    }
 }
