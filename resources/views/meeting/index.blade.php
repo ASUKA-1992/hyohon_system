@@ -1,4 +1,4 @@
-@extends('layout.common',['title'=>'会議一覧'])
+@extends('layout.pc_common',['title'=>'会議一覧'])
 @section('content')
     <div class="text_center">
         

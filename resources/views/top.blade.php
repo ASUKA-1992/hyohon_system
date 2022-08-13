@@ -10,7 +10,7 @@
             <ul>
             	@if(!is_null($login_admin))
 	                <li><a href="{{ route('meeting.create') }}" class="main_button">会議を作成する</a></li>
-	                <li><a href="./admin" class="main_button">マスタ管理</a></li>
+	                <li><a href="./admin" class="main_button">管理画面</a></li>
 	            @endif
                 <li><a href="./admin/login" class="main_button">管理者ログイン/ログアウト</a></li>
             </ul>

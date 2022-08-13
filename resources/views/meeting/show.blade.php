@@ -52,8 +52,16 @@
                 <li><span class="bold">会議作成</span>: {{ $meeting->created_at->format('Y/m/d H:i'); }}</li>
                 <li><span class="bold">会議1終了</span>: {{ is_null($meeting->status1_end_date) ? "-" : $meeting->status1_end_date->format('Y/m/d H:i'); }}</li>
                 <li><span class="bold">会議2終了</span>: {{ is_null($meeting->status2_end_date) ? "-" : $meeting->status2_end_date->format('Y/m/d H:i'); }}</li>
-                <li><span class="bold">{{ config("const.label.comment") }}</span>: {{ is_null($meeting->comment) ? "-" : $meeting->comment }}</li>
             </ul>
+        </div>
+        
+        <div class="font_size_12 elm_center">
+            <span class="bold">{{ config("const.label.comment") }}</span><br/>
+            @if(is_null($meeting->comment) || $meeting->comment == "")
+            	-
+            @else
+            	<textarea disabled class="show_textarea">{{ $meeting->comment }}</textarea>
+            @endif
         </div>
 
         <div>

@@ -1,4 +1,4 @@
-@extends('layout.admin.common',['title'=>'管理者ログイン'])
+@extends('layout.admin.common',['title'=>'管理者ログイン/ログアウト'])
 @section('content')
     <div class="admin_form_div text_center">
 		@if($login_admin)
