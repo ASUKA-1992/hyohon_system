@@ -10,7 +10,7 @@
             <li>
                 <a class="wide_button @if($status==1) current_status @endif"
                     href="{{ route('participant.status_change', [$participant->id, 1]) }}" 
-                    onclick="return confirm('ステータスを変更します。よろしいですか？')">会議開示前</a>
+                    onclick="return confirm('ステータスを変更します。よろしいですか？')">会議開始前</a>
             </li>
          
             <li>

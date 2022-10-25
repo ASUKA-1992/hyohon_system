@@ -12,7 +12,7 @@ class Participant extends Model
     protected $fillable = ['meeting_id', 'name', 'owner_type', 
         'role_name', 'role_name_sub',
         'action_name', 'action_name_sub',
-        'role_open', 'action_open'];
+        'meeting_title_open', 'role_open', 'action_open'];
 
     public function meeting()
     {

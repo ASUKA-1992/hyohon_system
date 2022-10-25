@@ -103,7 +103,7 @@
 
         window.onload = function () {
             checkbox_disp_btn();
-            /*var role_checkbox = document.getElementsByClassName("role_checkbox");
+            var role_checkbox = document.getElementsByClassName("role_checkbox");
             var action_checkbox = document.getElementsByClassName("action_checkbox");
 
             // 役割チェック
@@ -118,7 +118,7 @@
                 action_checkbox[i].onclick = function () {
                     checkbox_disp_btn();
                 }   
-            }*/
+            }
 
             // ファシリテーター名が空の場合、ランダムで文字列を入れる
             var owner = $('#owner').val();

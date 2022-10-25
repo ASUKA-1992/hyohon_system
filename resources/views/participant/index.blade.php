@@ -18,7 +18,7 @@
 	        	@if($meeting->status == 1)
 	        		会議開始までお待ちください。
 	        	@elseif( $meeting->status == 6)
-	        		会議再開までお待ちください。
+	        		お疲れ様でした。また次回の会議でお会いしましょう。
 	        	@endif
 	        	</div>
 	        @endif
@@ -32,6 +32,9 @@
         
         <ul>
             @foreach ($participants as $participant)
+            	@if(is_null($login_admin) && $participant->owner_type != 1)
+            		@continue;
+            	@endif
                 @if(!is_null($participant->name))
                     <li>
                         <a href="{{ route('participant.show', $participant->id) }}" class="wide_button"

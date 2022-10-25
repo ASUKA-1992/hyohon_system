@@ -10,7 +10,10 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body class="antialiased">
-        <div class="head">
+        <div class="head @if(!is_null($login_admin)) head_color_login @endif">
+        	@if(!is_null($login_admin))
+        		<span class="head_login">管理者ログイン中</span>
+        	@endif
             <div>
                 <a href="{{ route('top') }}" class="font_size_15 bold">
                     <img src="{{ asset('/assets/images/logo.png') }}" alt="ロゴ" height="40"><br/>

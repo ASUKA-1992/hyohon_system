@@ -109,6 +109,10 @@ ul {
     margin-bottom: 40px !important;
 }
 
+.mt_10{
+    margin-top: 10px !important;
+}
+
 .mt_20{
     margin-top: 20px !important;
 }
@@ -291,6 +295,18 @@ ul {
     margin-bottom: 10px;
 }
 
+.head_login{
+	position: absolute;
+	right: 0;
+	font-size: 12px;
+	right: 10px;
+	font-weight: bold;
+}
+
+.head_color_login{
+	background-color: #f0e68c;
+}
+
 /*top 専用*/
 .top_button{
     display       : inline-block;
@@ -467,4 +483,28 @@ textarea{
 
 .admin_form .input_text{
     border: 2px solid #a9a9a9;
+}
+
+/*Explode(標本システム関係なし)*/
+#explode_main_div{
+    position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -55%);
+}
+
+#explode_main_div canvas{
+    background-color: #000020;
+    box-shadow: 2px 1px 1px #4682b4;
+}
+
+#bottom_btn_div{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -250%);
+}
+
+#bottom_btn_div a{
+    margin: 0 10px;
 }

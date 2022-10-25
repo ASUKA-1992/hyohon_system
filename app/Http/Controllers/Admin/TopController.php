@@ -14,6 +14,9 @@ class TopController extends Controller
     
     public function login(Request $request)
     {
+    	if(\Session::get('login_admin')){
+    		return view('admin/logout');
+    	}
     	return view('admin/login');
     }
     

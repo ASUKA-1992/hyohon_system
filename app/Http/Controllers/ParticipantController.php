@@ -168,6 +168,13 @@ class ParticipantController extends Controller
         return $result;
     }
     
+    public function meeting_title_open($id)
+    {
+        $participant = Participant::find($id);
+        $participant->meeting_title_open = 1;
+        $result = $participant->save();
+        return $result;
+    }
 
     public function role_open($id)
     {

@@ -12,7 +12,9 @@
 	                <li><a href="{{ route('meeting.create') }}" class="main_button">会議を作成する</a></li>
 	                <li><a href="./admin" class="main_button">管理画面</a></li>
 	            @endif
-                <li><a href="./admin/login" class="main_button">管理者ログイン/ログアウト</a></li>
+                <li>
+                	<a href="./admin/login" class="main_button">管理者@if($login_admin)ログアウト@elseログイン@endif</a>
+                </li>
             </ul>
         </div>
     </div>

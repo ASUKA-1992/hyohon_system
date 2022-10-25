@@ -27,6 +27,8 @@ Route::get('participant/{id}/meeting2_select', 'App\Http\Controllers\Participant
 Route::get('participant/{id}/meeting2_finish', 'App\Http\Controllers\ParticipantController@meeting2_finish')->name('participant.meeting2_finish');
 Route::get('participant/{id}/meeting21_finish', 'App\Http\Controllers\ParticipantController@meeting21_finish')->name('participant.meeting21_finish');
 Route::get('participant/{id}/meeting2_select', 'App\Http\Controllers\ParticipantController@meeting2_select')->name('participant.meeting2_select');
+
+Route::get('participant/{id}/meeting_title_open', 'App\Http\Controllers\ParticipantController@meeting_title_open')->name('participant.meeting_title_open');
 Route::get('participant/{id}/role_open', 'App\Http\Controllers\ParticipantController@role_open')->name('participant.role_open');
 Route::get('participant/{id}/action_open', 'App\Http\Controllers\ParticipantController@action_open')->name('participant.action_open');
 Route::get('participant/{id}/status_change/{new_status}', 'App\Http\Controllers\ParticipantController@status_change')->name('participant.status_change');
@@ -72,3 +74,12 @@ Route::post('admin/theme/store', 'App\Http\Controllers\Admin\ThemeController@sto
 Route::get('admin/theme/edit/{id}', 'App\Http\Controllers\Admin\ThemeController@edit')->name('theme.edit');
 Route::patch('admin/theme/update/{id}', 'App\Http\Controllers\Admin\ThemeController@update')->name('theme.update');
 Route::delete('admin/theme/destroy/{id}', 'App\Http\Controllers\Admin\ThemeController@destroy');
+
+// Explode(グラレベ用)
+Route::get('admin/explode', 'App\Http\Controllers\Admin\ExplodeController@index')->name('explode.index');
+Route::get('admin/explode/create', 'App\Http\Controllers\Admin\ExplodeController@create')->name('explode.create');
+Route::get('admin/explode/{id}', 'App\Http\Controllers\Admin\ExplodeController@show')->name('explode.show');
+Route::post('admin/explode/store', 'App\Http\Controllers\Admin\ExplodeController@store')->name('explode.store');
+Route::get('admin/explode/edit/{id}', 'App\Http\Controllers\Admin\ExplodeController@edit')->name('explode.edit');
+Route::patch('admin/explode/update/{id}', 'App\Http\Controllers\Admin\ExplodeController@update')->name('explode.update');
+Route::delete('admin/explode/destroy/{id}', 'App\Http\Controllers\Admin\ExplodeController@destroy');

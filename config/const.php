@@ -29,7 +29,7 @@ return [
     ],
     "meetings" => [
         "status" => [
-            1 => "テーマ開示前",
+            1 => "会議開始前",
             2 => "テーマ開示",
             3 => "役割開示",
             4 => "初期意見",
@@ -66,5 +66,16 @@ return [
             1 => "YES",
         ],
     ],
-    "admin_password" =>  env('ADMIN_PASSWORD')
+    "admin_password" =>  env('ADMIN_PASSWORD'),
+
+    // Explode(標本システム関係なし)
+    "explodes" => [
+        "place" => [
+            1 => "center",
+            2 => "top",
+            3 => "bottom",
+            4 => "all sides",
+            5 => "random",
+        ],
+    ],
 ];
