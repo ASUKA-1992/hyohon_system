@@ -10,15 +10,15 @@
             <li>
                 <a class="wide_button @if($status==1) current_status @endif"
                     href="{{ route('participant.status_change', [$participant->id, 1]) }}" 
-                    onclick="return confirm('ステータスを変更します。よろしいですか？')">会議開始前</a>
+                    onclick="return confirm('ステータスを変更します。よろしいですか？')">名前登録～開始前</a>
             </li>
-         
-            <li>
+  
+            {{--<li>
                 <a class="wide_button @if($status==2) current_status @endif"
                     href="{{ route('participant.status_change', [$participant->id, 2]) }}" 
                     onclick="return confirm('ステータスを変更します。よろしいですか？')">テーマ開示</a>
-            </li>
-
+            </li>--}}
+            
             <li>
                 <a class="wide_button @if($status==3) current_status @endif"
                     href="{{ route('participant.status_change', [$participant->id, 3]) }}" 
@@ -40,7 +40,7 @@
             <li>
                 <a class="wide_button @if($status==6) current_status @endif"
                     href="{{ route('participant.status_change', [$participant->id, 6]) }}" 
-                    onclick="return confirm('ステータスを変更します。よろしいですか？')">会議①終了</a>
+                    onclick="return confirm('ステータスを変更します。よろしいですか？')">会議①終了～再開前</a>
             </li>
 
             <li>
@@ -73,6 +73,11 @@
                     onclick="return confirm('ステータスを変更します。よろしいですか？')">終了</a>
             </li>
         </ul>
+
+        <div class="">参加者数:{{ $participant_cnt }}</div>
+        @if( $no_name_cnt > 0 )
+            <div class="font_size_12 error_text">{{ $no_name_cnt }}人の参加者が名前未登録です</div>
+        @endif
 
         <table class="elm_center paticipans_table" id="show_div_table">
             <tr>

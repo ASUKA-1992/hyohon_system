@@ -22,9 +22,13 @@ class ThemeController extends Controller
 
     public function store(ThemeRequest $request)
     {
+    	$note = $request->note;
+    	if(is_null($note)){
+    		$note = "";
+    	}
         Theme::create([
           'name' => $request->name,
-          'note' => $request->note,
+          'note' => $note,
           'active_flg' => true,
         ]);
         return redirect()->route('theme.index');
@@ -40,7 +44,11 @@ class ThemeController extends Controller
     {
         $theme = Theme::find($id);
         $theme->name = $request->name;
-        $theme->note = $request->note;
+        if(is_null($request->note)){
+        	$theme->note = "";
+        }else{
+        	$theme->note = $request->note;
+        }
         $theme->active_flg = $request->active_flg;
         $theme->save();
  

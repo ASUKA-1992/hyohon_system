@@ -1,18 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Explode;
+use App\Models\ExplodeWorkshop;
 use App\Http\Requests\ExplodeRequest; 
 
 class ExplodeController extends Controller
 {
     public function index()
     {
-        $explodes = Explode::orderBy('order')->get();
-        return view('admin/explode/index', compact('explodes'));
+        $whokshops = ExplodeWorkshop::orderBy('order')->get();
+        
+        //ワークショップIDの配列作成
+        $whokshop_ids = [];
+        foreach ($whokshops as $whokshop) {
+        	$whokshop_ids[] = $whokshop->id;
+        }
+        
+        $explodes = Explode::where('order', '<=', 900)->whereNotIn('order', $whokshop_ids)->orderBy('created_at')->get();
+        return view('explode/index', compact('explodes', "whokshops"));
+    }
+
+    public function index_honban(Request $request)
+    {
+    	$workshop_id = $request->workshop_id;
+        $explodes = Explode::where('order',  $workshop_id)->orderBy('created_at')->get();
+        return view('explode/index_honban', compact('explodes', 'workshop_id'));
     }
 
     public function show(Request $request, $id)
@@ -26,12 +42,13 @@ class ExplodeController extends Controller
         $previous=Explode::where('order', '<', $explode->order)->orderBy('order', 'desc')->first();
         $next=Explode::where('order', '>', $explode->order)->orderBy('order')->first();
 
-        return view('admin/explode/show', compact('explode', 'colors', 'previous', 'next'));
+        return view('explode/show', compact('explode', 'colors', 'previous', 'next'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin/explode/create');
+    	$order = $request->workshop_id;
+        return view('explode/create', compact('order'));
     }
 
     public function store(ExplodeRequest $request)
@@ -46,6 +63,10 @@ class ExplodeController extends Controller
             }
         }
 
+        if($request->order == null){
+            $request->order = 1;
+        }
+
         Explode::create([
           'name' => $request->name,
           'note' => $request->note,
@@ -58,14 +79,15 @@ class ExplodeController extends Controller
           'count' => $request->count,
           'order' => $request->order,
         ]);
-        return redirect()->route('explode.index');
+        return redirect()->route('explode_workshop.show', $request->order);
     }
 
     public function edit($id)
     {
         $explode = Explode::find($id);
         $color_num = explode(",", $explode->colors);
-        return view('admin/explode/edit', compact('explode', 'color_num'));
+        $whokshops = ExplodeWorkshop::orderBy('order')->get();
+        return view('explode/edit', compact('explode', 'color_num', 'whokshops'));
     }
 
     public function update(ExplodeRequest $request, $id)
@@ -82,6 +104,10 @@ class ExplodeController extends Controller
             }
         }
 
+        if($request->order == null){
+            $request->order = 1;
+        }
+
         $explode->name = $request->name;
         $explode->note = $request->note;
         $explode->place = $request->place;
@@ -94,14 +120,29 @@ class ExplodeController extends Controller
         $explode->order = $request->order;
         $explode->save();
  
-        return redirect()->route('explode.index');
+        return redirect()->route('explode_workshop.show', $explode->order);
     }
 
     public function destroy($id)
     {
         $explode = Explode::findOrFail($id);
+        $order = $explode->order;
         $explode->delete();
         
-        return redirect()->route('explode.index');
+        return redirect()->route('explode_workshop.show', $order);
+    }
+
+    public function sample_2023(Request $request, $id)
+    {
+        $explode = Explode::find($id);
+        
+        // JS用に粒子色の文字列置き換え
+        $colors = str_replace('#', '0x', $explode->colors);
+
+        //前へ、次へ
+        $previous=Explode::where('order', '<', $explode->order)->orderBy('order', 'desc')->first();
+        $next=Explode::where('order', '>', $explode->order)->orderBy('order')->first();
+
+        return view('explode/sample_2023', compact('explode', 'colors', 'previous', 'next'));
     }
 }

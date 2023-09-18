@@ -14,27 +14,33 @@
         <div class="head @if(!is_null($login_admin)) head_color_login @endif">
 			@if(!is_null($login_admin))
         		<span class="head_login">管理者ログイン中</span>
-        	@endif
+            @else
+                <div class="head_normal">
+                    <span class="bold">{{ $participant->name }}</span>さん
+                    @if($participant->role_open != 0)
+                        <br/><span>{{ $participant->role_name }}</span>
+                    @endif
+                    @if($participant->action_open != 0)
+                        <br/><span>{{ $participant->action_name }}</span>
+                    @endif
+                </div>
+            @endif
             <div>
-                <a href="{{ route('top') }}" class="font_size_15 bold">
+                <a href="{{ route('top') }}" class="font_size_12">
                     <img src="{{ asset('/assets/images/logo.png') }}" alt="ロゴ" height="40"><br/>
                     標本会議補助システム
-                    @if(!is_null($login_admin)) / 管理者ログイン中 @endif
                 </a>
             </div>
             
         </div>
         <!-- コンテンツ -->
         <div class="content">
-            <div class="text_center meeting_create bordr_bottom">
-                <img src="{{ asset('/assets/images/paticipant_status/'.config("const.meetings.status_en")[$participant->meeting->status].'.png') }}" alt="ステータスバー" width="100%">
-                <div class="litte_bold_text">{{ config('const.label.meeting_name') }}</div>
-                <div class="font_size_20">{{ $participant->meeting->name }}</div>
-                
+            <div class="text_center meeting_create">
                 @if($participant->meeting->status > 2)
 	                <div class="litte_bold_text">{{ config('const.label.meeting_title') }}</div>
 	        		<div class="font_size_20">{{ $participant->meeting->title }}</div>
 	        	@endif
+                <img src="{{ asset('/assets/images/paticipant_status/'.config("const.meetings.status_en")[$participant->meeting->status].'.png') }}" alt="ステータスバー" width="100%">               
             </div>
 
             @yield('content')

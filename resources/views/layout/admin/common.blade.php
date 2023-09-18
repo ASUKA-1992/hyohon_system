@@ -15,7 +15,7 @@
         		<span class="head_login">管理者ログイン中</span>
         	@endif
             <div>
-                <a href="{{ route('top') }}" class="font_size_15 bold">
+                <a href="{{ route('top') }}" class="font_size_12">
                     <img src="{{ asset('/assets/images/logo.png') }}" alt="ロゴ" height="40"><br/>
                     標本会議補助システム
                     

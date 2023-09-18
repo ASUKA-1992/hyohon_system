@@ -1,4 +1,4 @@
-@extends('layout.admin.explode.show')
+@extends('layout.explode.show')
 @section('content')
 <div class="text_center disp_none">
     <input value="{{ $explode->name }}"/>
@@ -9,16 +9,22 @@
     <input id ="colors" value="{{ $explode->colors }}"/>
 </div>
 
-<div class="text_center">
+<div class="text_center disp_none">
     <div class="font_size_20 bold mt_10">{{ $explode->name }}</div>
     <div>{{ $explode->note }}</div>
 </div>
 
-<div id="bottom_btn_div">
+<div id="bottom_btn_div" class="disp_none">
     <a class="under_line_text" href="{{ route('explode.index') }}">list</a>/
     @if(isset($previous)) <a class="under_line_text" href="{{ route('explode.show', $previous) }}">before</a>@endif
     @if(isset($previous) && isset($next)) / @endif
     @if(isset($next)) <a class="under_line_text" href="{{ route('explode.show', $next) }}">next</a> @endif
+</div>
+
+<div id="canvas_area">    
+</div>
+
+<div id="explode_border">
 </div>
 
 <script>
@@ -27,10 +33,12 @@
     var parts = [];
     var container = document.createElement('div');
     container.id = "explode_main_div"; 
-    document.body.appendChild( container );
+    var canvas_area = document.getElementById("canvas_area");
+    canvas_area.appendChild( container );
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth * 0.35, window.innerHeight * 0.80);
+    //renderer.setSize(window.innerWidth * 0.35, window.innerHeight * 0.80);
+    renderer.setSize(window.innerWidth * 0.95, window.innerHeight * 0.95);
     container.appendChild( renderer.domElement );
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,1, 10000)
@@ -52,7 +60,7 @@
     }
 
     //クリック
-    const el = document.getElementById('explode_main_div');
+    const el = document.getElementById('explode_border');
     el.addEventListener('click', function(){
         main();
     }, false);
@@ -132,6 +140,14 @@
             }else{
                 z_dir = 0;
             }
+
+            if(i != 0){
+                if(i % 2 == 0 ) {
+                    //x_dir = x_dir + 0.05;
+                } else {
+                    //x_dir = x_dir - 0.05;
+                }
+            }
             
             dirs.push({x:x_dir,y:y_dir,z:z_dir});
         }
@@ -143,6 +159,7 @@
         }
         
         var material = new THREE.ParticleBasicMaterial( { size: objectSize,  color: color, fog: true });
+        //material.linecap = 'round'
         var particles = new THREE.ParticleSystem( geometry, material );
         
         this.object = particles;

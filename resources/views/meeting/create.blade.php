@@ -25,7 +25,7 @@
             <input type="text" name="owner" id="owner" class="input_text" value="{{ old('owner') }}" maxlength="10"><br/>
             
             <label class="form_label">参加者数</label><br/>
-            <input type="number" id="participants_num" name="participants_num" class="input_text" max=10 min=2 value=5><br/>
+            <input type="number" id="participants_num" name="participants_num" class="input_text" max=20 min=2 value=5><br/>
 
             <label class="form_label">{{ config("const.label.role") }} 
                 <span class="font_size_12">(

@@ -1,27 +1,21 @@
 @extends('layout.common',['title'=>'会議別参加者一覧'])
 @section('content')
     <div class="text_center meeting_create">
-    	<div class="bordr_bottom">
+    	<div class="">
     		<div class="bold">待機室</div>
     		<a class="link_text" onclick="copyUrl('{{ route('participant.index', $meeting->id) }}')">参加URLコピー</a>
+            @if(isset($login_admin))
+                 / <a class="link_text" href="{{ route('participant.show', $owner->id) }}">ファシリテーター用画面へ</a>
+            @endif
     	</div>
     
-    	<div class="bordr_bottom">
+    	<div class="bordr_top mt_10">
 	    	<div class="litte_bold_text">{{ config('const.label.meeting_name') }}</div>
 	        <div class="font_size_20">{{ $meeting->name }}</div>
-	        
-	        <div class="litte_bold_text">{{ config("const.label.status") }}</div>
-	        <div class="font_size_20">{{ config("const.meetings.status")[$meeting->status] }}</div>
-	        
-	        @if($meeting->status == 1 || $meeting->status == 6)
-	        	<div class="litte_bold_text">
-	        	@if($meeting->status == 1)
-	        		会議開始までお待ちください。
-	        	@elseif( $meeting->status == 6)
-	        		お疲れ様でした。また次回の会議でお会いしましょう。
-	        	@endif
-	        	</div>
-	        @endif
+        </div>
+        <div class="">
+            <div class="litte_bold_text">{{ config('const.label.status') }}</div>
+            <img src="{{ asset('/assets/images/paticipant_status/'.config("const.meetings.status_en")[$meeting->status].'.png') }}" alt="ステータスバー" width="100%">
 	    </div>
 
         <div class="">参加者数:{{ $participant_cnt }}</div>
@@ -32,7 +26,7 @@
         
         <ul>
             @foreach ($participants as $participant)
-            	@if(is_null($login_admin) && $participant->owner_type != 1)
+            	@if($participant->owner_type != 1)
             		@continue;
             	@endif
                 @if(!is_null($participant->name))

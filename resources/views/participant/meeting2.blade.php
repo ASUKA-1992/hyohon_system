@@ -1,7 +1,7 @@
 @extends('layout.common_paticipant',['title'=>'会議閲覧'])
 @section('content')
 <div class="text_center meeting_create">
-    <img src="{{ asset('/assets/images/meeting_images/' . $participant_name_cnt . '.jpg') }}" alt="会議イラスト" width="100%">
+    <img class="mt_10" src="{{ asset('/assets/images/meeting_images/' . $participant_name_cnt . '.jpg') }}" alt="会議中" width="100%">
 
     <div class="mb_10">
         <table class="elm_center paticipans_table">

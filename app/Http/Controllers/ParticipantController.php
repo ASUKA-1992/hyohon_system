@@ -18,8 +18,12 @@ class ParticipantController extends Controller
         $participant_cnt = Participant::where([['meeting_id', '=', $meeting_id], ['owner_type', '<>', 2]])->count();
         $no_name_cnt = Participant::where('meeting_id', $meeting_id)->whereNull('name')->count();
         $meeting = Meeting::find($meeting_id);
+
+        //オーナーの情報
+        $owner = Participant::where([['meeting_id', '=', $meeting_id], ['owner_type', 2]])->first();
+
         
-        return view('participant/index', compact('participants', 'meeting', 'no_name_cnt', 'participant_cnt'));
+        return view('participant/index', compact('participants', 'meeting', 'no_name_cnt', 'participant_cnt', 'owner'));
     }
 
     public function input_name(Request $request, $meeting_id)
@@ -53,7 +57,7 @@ class ParticipantController extends Controller
         $participant->name = $name;
         $participant->save();
         
-        return redirect()->route('participant.index', $meeting_id);
+        return redirect()->route('participant.show', $participant->id);
     }
 
     public function show($id)
@@ -64,8 +68,15 @@ class ParticipantController extends Controller
         $status = $participant->meeting->status;
 
         // オーナーの場合、専用画面へ
-        if($participant->owner_type == 2 && \Session::get('login_admin')){
-            return view('participant/owner', compact('participant', 'participants', 'status'));
+        if($participant->owner_type == 2){
+            if(\Session::get('login_admin')){
+                $no_name_cnt = Participant::where('meeting_id', $participant->meeting_id)->whereNull('name')->count();
+                $participant_cnt = Participant::where([['meeting_id', '=', $participant->meeting_id], ['owner_type', '<>', 2]])->count();
+                return view('participant/owner', compact('participant', 'participants', 'status', 'no_name_cnt', 'participant_cnt'));
+            } else {
+                // ログインしてない場合、待機所へリダイレクト
+                return redirect()->route('participant.index', $participant->meeting_id);
+            }
         }
 
         // 名前入力者が2名未満→会議が成立しないため、待機所にリダイレクト
@@ -76,16 +87,22 @@ class ParticipantController extends Controller
         
         $answerd_flg = true;
 
-        
-
         switch ($participant->meeting->status) {
             case '1':
+                if(isset($participant->name)){
+                    return view('participant/before_meeting', compact('participant'));
+                } else {
+                    // 名前未設定
+                    return redirect()->route('participant.index', $participant->meeting_id);
+                }
             case '6':
-                //会議開始前or会議①終了→待機所にリダイレクト
-                return redirect()->route('participant.index', $participant->meeting_id);
+                return view('participant/meeting1_after', compact('participant'));
 
+            /*
+            テーマ開示はなくなった
             case '2':
                 return view('participant/open_title', compact('participant'));
+            */
 
             case '3':
                 return view('participant/open_role', compact('participant'));
@@ -124,11 +141,11 @@ class ParticipantController extends Controller
 		        $meeting_result = null;
 		        $yes_cnt = 0;
 		        $no_cnt = 0;
-		        foreach ($participants as $participant){
-		            if(is_null($participant->answer2)){
+		        foreach ($participants as $value){
+		            if(is_null($value->answer2)){
 		                continue;
 		            }
-		            if($participant->answer2 == 0){
+		            if($value->answer2 == 0){
 		                $no_cnt++;
 		            }else{
 		                $yes_cnt++;

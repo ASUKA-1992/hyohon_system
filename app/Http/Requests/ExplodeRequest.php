@@ -37,7 +37,7 @@ class ExplodeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name'      => 'タイトル',
+            'name'      => '登録者ニックネーム',
             'place'     => '粒子発生場所',
             'speed'     => '粒子速度',
             'quantity'  => '粒子量',

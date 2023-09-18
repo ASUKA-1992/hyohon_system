@@ -137,6 +137,14 @@ ul {
     font-size: 20px;
 }
 
+.font_size_25{
+    font-size: 25px;
+}
+
+.font_size_30{
+    font-size: 30px;
+}
+
 .active_row_0{
     background-color: gray;
 }
@@ -152,11 +160,11 @@ ul {
 }
 
 .bordr_top{
-	border-top: 1px solid black;
+	border-top: 3px solid gray;
 }
 
 .bordr_bottom{
-	border-bottom: 1px solid black;
+	border-bottom: 3px solid gray;
 }
 
 .under_line_text{
@@ -196,6 +204,40 @@ ul {
     box-shadow    : 2px 2px 5px #666666;  /* 影の設定 */
     width         : 75px;
     margin        : 0 10px;
+}
+
+
+/*yes noボタン*/
+.button_img_yes
+, .button_img_no{
+    width: 30%;
+    cursor: pointer;   
+}
+
+.button_img_yes img
+, .button_img_no img{
+    width: 100%;
+}
+
+.button_img_border{
+    border: 3px solid white;
+}
+
+.button_img_border_selected{
+    border: 3px solid #ffa500;
+}
+
+.font_yes, .font_no{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.font_yes{
+    color: #1e90ff;
+}
+
+.font_no{
+    color: #3cb371;
 }
 
 /*共通ボタン*/
@@ -274,6 +316,33 @@ ul {
     margin: 5px 0;
 }
 
+/*カードボタン*/
+.card_btn{
+    width         : 200px;
+    cursor        : pointer;   
+}
+.card_omote{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.card_btn img,
+.card_omote img{
+    height: 270px;
+}
+
+/*カードの表の文字*/
+.text_card_omote{
+    position: absolute;
+    top: 45%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding:0;
+    margin:0;
+    width: 90%;
+}
+
 .current_status{
     background    : #ffa500 !important; 
 }
@@ -297,10 +366,16 @@ ul {
 
 .head_login{
 	position: absolute;
-	right: 0;
 	font-size: 12px;
 	right: 10px;
 	font-weight: bold;
+}
+
+.head_normal{
+    text-align: right;
+	position: absolute;
+	font-size: 12px;
+	right: 10px;
 }
 
 .head_color_login{
@@ -405,11 +480,14 @@ ul {
 }
 
 .manual_area{
-    background-color: white;
-    border: solid;
+    border: 2px solid;
     border-radius: 3px;
     padding: 10px;
     margin-bottom: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
 }
 
 .paticipans_table th{
@@ -488,14 +566,13 @@ textarea{
 /*Explode(標本システム関係なし)*/
 #explode_main_div{
     position: absolute;
-	top: 53%;
+	top: 55%;
 	left: 50%;
 	transform: translate(-50%, -55%);
 }
 
 #explode_main_div canvas{
     background-color: #000020;
-    box-shadow: 2px 1px 1px #4682b4;
 }
 
 #bottom_btn_div{
@@ -507,4 +584,64 @@ textarea{
 
 #bottom_btn_div a{
     margin: 0 10px;
+}
+
+.body_exlode{
+    background-color: #000000;
+}
+
+#explode_border{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: #000000 100px solid;
+    z-index: 1;
+}
+
+.top_white{
+    position: absolute;
+    background-color: #ffffff;
+    height: 150px;
+    width: 100%;
+}
+
+#title_area{
+    background-color: #ffffff;
+    padding: 5px 20px;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 0;
+}
+
+#ThreeJS{
+    background-color: #000000;
+    width: 100%;
+    height: 99.6%;
+}
+
+#ThreeJS canvas{
+    width: 100%;
+    height: 99.6%;
+}
+
+.konton_w90per{
+    width: 90%;
+    max-width: 400px;
+}
+
+.img_100per{
+    width: 100%;
+}
+
+.select_white_border{
+    background: white;
+    border: 2px solid #a9a9a9;
+}
+
+.honan_color{
+    -webkit-text-stroke: 1px black; /* webkitのベンダープレフィックス */
+    text-stroke: 1px black;         /*　ベンダープレフィックスのない指定方法 */
 }
